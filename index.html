@@ -352,8 +352,17 @@
           <div id="rsvpPanel">
             <h2>Kindly RSVP</h2>
             <p class="rsvp-subtitle">Please let me know if you’ll be joining me.</p>
-
-            <form id="rsvpForm">
+            <form
+  id="rsvpForm"
+  name="birthday-rsvp"
+  method="POST"
+  data-netlify="true"
+>
+  <input
+    type="hidden"
+    name="form-name"
+    value="birthday-rsvp"
+  >
               <div class="field">
                 <label for="guestName">Your name</label>
                 <input id="guestName" name="name" type="text" autocomplete="name" required />
@@ -486,37 +495,25 @@
           additionalGuest.value = "No";
         }
       }
+      function submitRsvp() {
 
-      function submitRsvp(event) {
-        event.preventDefault();
+  setTimeout(() => {
 
-        if (!rsvpForm.reportValidity()) return;
+    successMessage.textContent =
+      "Thank you 🤍 Your RSVP has been received.";
 
-        const formData = new FormData(rsvpForm);
-        const response = {
-          name: String(formData.get("name") || "").trim(),
-          attendance: String(formData.get("attendance") || ""),
-          additionalGuest: attendance.value === "Yes"
-            ? String(formData.get("additionalGuest") || "No")
-            : "Not applicable"
-        };
+    successMessage.classList.add("show-message");
 
-        // This confirms the interface works locally. Replace this line with
-        // your Tally, Google Forms, Formspree or other form endpoint connection.
-        console.log("RSVP response:", response);
+  }, 500);
 
-        rsvpForm.hidden = true;
-        successMessage.textContent = response.attendance === "Yes"
-          ? `Thank you, ${response.name} 🤍 Your RSVP has been received. I can’t wait to celebrate with you!`
-          : `Thank you for letting me know, ${response.name} 🤍 You’ll be missed.`;
-        successMessage.classList.add("show-message");
-      }
+}
 
-      sealBtn.addEventListener("click", openInvite);
-      rsvpBtn.addEventListener("click", toggleRsvpPanel);
-      attendance.addEventListener("change", updateGuestQuestion);
-      rsvpForm.addEventListener("submit", submitRsvp);
-    })();
+sealBtn.addEventListener("click", openInvite);
+rsvpBtn.addEventListener("click", toggleRsvpPanel);
+attendance.addEventListener("change", updateGuestQuestion);
+rsvpForm.addEventListener("submit", submitRsvp);
+
+})();
   </script>
 </body>
 </html>          
