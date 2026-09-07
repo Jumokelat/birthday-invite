@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Jumoke’s 20th Birthday</title>
+  <title>Jumoke’s Birthday Dinner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
@@ -339,7 +338,7 @@
     <section id="stage-scroll" aria-label="Birthday invitation" aria-live="polite">
       <article class="scroll">
         <p class="eyebrow">You are warmly invited</p>
-        <h1>Jumoke’s 20th Birthday</h1>
+        <h1>Jumoke’s Birthday Dinner</h1>
 
         <div id="typed" class="invite"></div>
         <span id="caret" class="cursor" aria-hidden="true">|</span>
@@ -352,16 +351,7 @@
           <div id="rsvpPanel">
             <h2>Kindly RSVP</h2>
             <p class="rsvp-subtitle">Please let me know if you’ll be joining me.</p>
-            <form
-  id="rsvpForm"
-  name="birthday-rsvp"
-  method="POST"
-  data-netlify="true"
->
-  <input
-    type="hidden"
-    name="form-name"
-    value="birthday-rsvp"
+            <form id="rsvpForm">
   >
               <div class="field">
                 <label for="guestName">Your name</label>
@@ -495,17 +485,16 @@
           additionalGuest.value = "No";
         }
       }
-      function submitRsvp() {
+      function submitRsvp(event) {
 
-  setTimeout(() => {
+  event.preventDefault();
 
-    successMessage.textContent =
-      "Thank you 🤍 Your RSVP has been received.";
+  successMessage.textContent =
+    "Thank you 🤍 Your RSVP has been received.";
 
-    successMessage.classList.add("show-message");
+  successMessage.classList.add("show-message");
 
-  }, 500);
-
+  rsvpForm.style.display = "none";
 }
 
       sealBtn.addEventListener("click", openInvite);
@@ -522,4 +511,4 @@
   <input type="text" name="additionalGuest" />
 </form>
 </body>
-</html>                   
+</html>          
