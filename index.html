@@ -508,12 +508,18 @@
 
 }
 
-sealBtn.addEventListener("click", openInvite);
-rsvpBtn.addEventListener("click", toggleRsvpPanel);
-attendance.addEventListener("change", updateGuestQuestion);
-rsvpForm.addEventListener("submit", submitRsvp);
-
-})();
+      sealBtn.addEventListener("click", openInvite);
+      rsvpBtn.addEventListener("click", toggleRsvpPanel);
+      attendance.addEventListener("change", updateGuestQuestion);
+      rsvpForm.addEventListener("submit", submitRsvp);
+    })();
   </script>
+  <!-- Netlify Form Detection -->
+
+<form name="birthday-rsvp" netlify hidden>
+  <input type="text" name="name" />
+  <input type="text" name="attendance" />
+  <input type="text" name="additionalGuest" />
+</form>
 </body>
-</html>          
+</html>                   
